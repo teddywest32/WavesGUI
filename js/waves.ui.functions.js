@@ -39,23 +39,10 @@
 var Waves = (function(Waves, $, undefined) {
 	"use strict";
 
-	//To DO: Extract DOM functions from the initApp and add to waves.ui.js
-	Waves.initApp = function () {
 
-        if (!_checkDOMenabled()) {
-            Waves.hasLocalStorage = false;
-        } else {
-            Waves.hasLocalStorage = true;
-       }
+    Waves.setInitApp = function (userAccounts) {
 
-        $("#wrapper").hide();
-        $("#lockscreen").show();
-        $("#lockscreenTable").show();
-
-        if(Waves.hasLocalStorage) {
-           var userAccounts = localStorage.getItem('WavesAccounts');
-
-           if(userAccounts !== null) {
+        if(userAccounts !== null) {
                 var accounts = JSON.parse(userAccounts);
 
                 $.each(accounts.accounts, function(accountKey, accountDetails) {
@@ -190,10 +177,44 @@ var Waves = (function(Waves, $, undefined) {
                 }
            });
 
+
+    }
+
+
+
+
+	//To DO: Extract DOM functions from the initApp and add to waves.ui.js
+	Waves.initApp = function () {
+
+        if (!_checkDOMenabled()) {
+            Waves.hasLocalStorage = false;
+        } else {
+            Waves.hasLocalStorage = true;
+       }
+
+        $("#wrapper").hide();
+        $("#lockscreen").show();
+        $("#lockscreenTable").show();
+
+        if(Waves.hasLocalStorage) {
+           var userAccounts = localStorage.getItem('WavesAccounts');
+
+           Waves.setInitApp(userAccounts);
+
         } else {
 
             //no LocalStorage support
-            $("#wavesAccounts").html('Your Browser does not support Storage, if you create an account please carefully backup your userdata.')
+            //$("#wavesAccounts").html('Your Browser does not support Storage, if you create an account please carefully backup your userdata.')
+
+
+            chrome.storage.local.get('WavesAccounts', function (result) {
+                
+                console.log(result);
+
+                Waves.setInitApp(result);
+
+
+            });
 
         }
 
@@ -305,6 +326,7 @@ var Waves = (function(Waves, $, undefined) {
     Waves.logout = function () {
         Waves = '';
         window.location.href = window.location.pathname;  
+        chrome.runtime.reload();
     }
 
 

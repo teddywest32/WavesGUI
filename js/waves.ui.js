@@ -111,7 +111,7 @@ var Waves = (function(Waves, $, undefined) {
             Waves.getAddressHistory(Waves.address, function(history) {
 
                 var transactionHistory = history[0];
-                var appContainer;
+                var appContainer = '';
 
                 var minYearFrom, maxYearFrom;
                 var minYearTo, maxYearTo;
@@ -125,6 +125,11 @@ var Waves = (function(Waves, $, undefined) {
                 var amountTransactions = transactionHistory.length;
                 var lastKey = amountTransactions - 1;
 
+                if(Waves.startSearch || Waves.stopSearch) {
+                    
+                    console.log('Filtering from: ' +Waves.startSearch+ ' to: '+Waves.stopSearch);
+                }
+
                 $.each(transactionHistory, function(historyKey, historyValue) {
 
                         if(historyKey === 0) {
@@ -134,9 +139,7 @@ var Waves = (function(Waves, $, undefined) {
                             minYearTo = moment(historyValue.timestamp).year();
 
                             toInput = moment(historyValue.timestamp).format("DD-MM-YYYY");
-                            if(Waves.startSearch || Waves.stopSearch) {
-                                $("#comboDateTo").val(Waves.stopSearch);
-                            } else {
+                            if(!Waves.startSearch && !Waves.stopSearch) {
                                 $("#comboDateTo").val(toInput);
                             }
                         }
@@ -148,13 +151,10 @@ var Waves = (function(Waves, $, undefined) {
 
                             fromInput = moment(historyValue.timestamp).format("DD-MM-YYYY");
 
-                            if(Waves.startSearch || Waves.stopSearch) {
-                                $("#comboDateFrom").val(Waves.startSearch);
-                            } else {
+                            if(!Waves.startSearch && !Waves.stopSearch) {
                                 $("#comboDateFrom").val(fromInput);
-                            }
+                            } 
                         }
-                       
 
                         if(Waves.startSearch || Waves.stopSearch) {
 
@@ -162,8 +162,9 @@ var Waves = (function(Waves, $, undefined) {
                             var stopSearchTimestamp = new Date(Waves.stopSearch.split("-").reverse().join("-")).getTime();
 
                             stopSearchTimestamp = +stopSearchTimestamp + (20*60*60*1000);
-
-                            if(historyValue.timestamp > startSearchTimestamp && historyValue.timestamp < stopSearchTimestamp) {
+                            //console.log(stopSearchTimestamp);
+                            //console.log(historyValue.timestamp);
+                            if(startSearchTimestamp < historyValue.timestamp && stopSearchTimestamp > historyValue.timestamp) {
 
                                 appContainer += '<tr>';
                                 appContainer += '<td>'+Waves.formatTimestamp(historyValue.timestamp)+'</td>';
@@ -191,10 +192,9 @@ var Waves = (function(Waves, $, undefined) {
                             appContainer += '<td>'+Waves.formatAmount(historyValue.amount)+' WAVE</td>';
                             appContainer += '</tr>';
                         }
-
-                    $("#transactionhistory").html(appContainer);
-                        
                 });
+
+                $("#transactionhistory").html(appContainer);
 
                 $('#comboDateFrom').combodate({
                     value: fromInput,
@@ -208,15 +208,7 @@ var Waves = (function(Waves, $, undefined) {
                     minYear: minYearTo
                 }); 
 
-                $("#transactionHistorySearch").on("click", function() {
-
-                    Waves.startSearch = $('#comboDateFrom').val();
-                    Waves.stopSearch = $('#comboDateTo').val();
-
-                    clearInterval(Waves.update);
-                    Waves.updatePage('mBB-history');
-
-                }); 
+                
             });
 
         },
@@ -248,6 +240,30 @@ var Waves = (function(Waves, $, undefined) {
                 });
 
                 $("#latestBlocksTable").html(row);
+
+            });
+
+            Waves.apiRequest(Waves.api.transactions.unconfirmed, function(response) {
+
+                response.sort(function(x, y){
+                    return y.timestamp - x.timestamp;
+                })
+
+                $.each(response, function(blockKey, blockData) {
+
+                    
+
+                });
+
+                var futureBlock = Waves.blockHeight + 1; 
+                var unconfirmedRow = '<tr class="fade">'+
+                        '<td>'+futureBlock+'</td>'+
+                        '<td><i>incoming</i></td>'+
+                        '<td>'+response.length+'</td>'+
+                        '<td><i>Unknown</i></td>'+
+                    '</tr>';
+
+                $("#latestBlocksUnconfirmed").html(unconfirmedRow);
 
             });
 
@@ -296,10 +312,20 @@ var Waves = (function(Waves, $, undefined) {
 
         switch(linkType) {
             case 'mBB-portfolio':
-                Waves.loadPayment();
+
             break;
             case 'mBB-history':
-                console.log('transaction history fetch');
+
+                $("#transactionHistorySearch").on("click", function() {
+
+                    console.log($('#comboDateFrom').val());
+
+                    Waves.startSearch = $('#comboDateFrom').val();
+                    Waves.stopSearch = $('#comboDateTo').val();
+
+                    Waves.updatePage('mBB-history');
+                }); 
+
             break;
         }
     });
