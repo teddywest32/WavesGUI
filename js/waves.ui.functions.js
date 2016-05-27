@@ -193,8 +193,8 @@ var Waves = (function(Waves, $, undefined) {
        }
 
         $("#wrapper").hide();
-        $("#lockscreen").show();
-        $("#lockscreenTable").show();
+        $("#lockscreen").fadeIn('1000');
+        $("#lockscreenTable").fadeIn('1000');
 
         if(Waves.hasLocalStorage) {
            var userAccounts = localStorage.getItem('WavesAccounts');
@@ -290,7 +290,7 @@ var Waves = (function(Waves, $, undefined) {
 
             $("#lockscreen").hide();
             $("#lockscreenTable").hide();
-            $("#wrapper").show();
+            $("#wrapper").fadeIn('1000');
 
 			var formatBalance = Waves.formatAmount(balance);
             $("#wavesCurrentBalance").val(formatBalance);
