@@ -744,7 +744,12 @@ input.tabs-radio:checked + label  img {
 }
 
 .wavesTable tbody tr:hover {
-    background: #CAE1FF;
+/*    background: #CAE1FF;*/
+    background: rgba(225,180,125, .3);;
+}
+
+.wavesTable tbody tr {
+    color: #AFAFAF;
 }
 
 .wTMainHeader {
@@ -764,25 +769,14 @@ input.tabs-radio:checked + label  img {
 	-webkit-transition: all .2s ease;
 }
 
+.wavesTable-txOut {
+    color: #000000;
+}
+
 
 /* =================================================== */
 /* WAVES STANDARD BUTTONS */ /* WAVES STANDARD BUTTONS */
 /* =================================================== */
-
-.wButton {
-    display: inline-block;
-    position: relative;
-    padding: .3rem;
-    padding-left: .8rem;
-    padding-right: .8rem;
-    background: none;
-    overflow: hidden;
-    font-family: 'Wesli';
-    font-size: 1rem;
-    color: #ffffff;
-    border: 1px solid #ffffff;
-    outline: none;
-}
 
 .wButton {
     display: inline-block;
@@ -890,6 +884,14 @@ input.tabs-radio:checked + label  img {
     text-align: center;
 }
 
+#transactionHistorySearch {
+    background: #37556E;
+    color: #fff;
+}
+
+#transactionHistorySearch:hover {
+    background: #E1B47D;
+}
 
 /* ================================================= */
 /* WAVES STANDARD INPUTS */ /* WAVES STANDARD INPUTS */
