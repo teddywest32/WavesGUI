@@ -124,6 +124,11 @@ body {
     cursor: pointer;
 }
 
+.divider-1, .divider-2 {
+    display: inline-block;
+    width: 1rem;
+}
+
 
 /* =============================================================== */
 /* PLACEHOLDER CONTENT SETTINGS */ /* PLACEHOLDER CONTENT SETTINGS */
@@ -361,12 +366,16 @@ body {
 #walletSeed {
 /*    width: 300px;*/
     margin-top: .5rem;
-    min-width: 350px;
+    min-width: 320px;
     resize: none;
 }
 
 #walletName {
 /*    width: 300px;*/
+    margin-top: .5rem;
+}
+
+#wavesAccounts {
     margin-top: .5rem;
 }
 
@@ -877,10 +886,6 @@ input.tabs-radio:checked + label  img {
     color: #fff;
 }
 
-.goBack {
-    margin-left: 1rem;
-}
-
 /* Button on Messenger ADD CONTACT */
 #addContactSubmit {
     background: #fff;
@@ -1247,6 +1252,11 @@ input.tabs-radio:checked + label  img {
 	}
 }
 
+@media only screen and (max-width: 640px) { /* Ipad */
+
+}
+    
+    
 @media only screen and (max-width: 640px) {
 
 	#tabs-Iconset { height: 80%; }
@@ -1332,9 +1342,37 @@ input.tabs-radio:checked + label  img {
 @media only screen and (max-width: 420px) {
 
     html { font-size: 12px; }
-    
     header { height: 40px; }
+    
+    #lockscreen {
+        text-align: center;
+        margin: 0 auto;
+        min-width: 300px;
+    }
 
+    #lockscreenTable {
+        text-align: center;
+        border: 1px solid yellow;
+        margin: 0 auto;
+    }
+
+    .loginAccountDiv {
+        display: block;
+        height: auto;
+        margin: 0 auto;
+    }
+    
+    .loginAccount {
+     margin-left: -1rem;
+    }
+       
+    .divider-1, .divider-2 { width: 0px; }
+    
+    #import_account, #create_account {
+        display: block; 
+        margin: 0 auto;
+    }
+    
     .wavesTable td {
         padding-left: .2rem;
         padding-right: .2rem;
@@ -1356,10 +1394,7 @@ input.tabs-radio:checked + label  img {
 		text-align: center;
 	}
 	
-	#tabs-Iconset img {
-		margin-top: .25rem;
-	}
-    
+	#tabs-Iconset img { margin-top: .25rem; }
     .jurl { height: 0.08rem; }
     
     #mBB-wallet { 

@@ -46,7 +46,6 @@
 <!-- LOG IN AREA -->
     <div id="lockscreen" class="userBG">
 
-        <div id="lockscreenTable-scroll">
         <table id="lockscreenTable">
 
             <thead>
@@ -90,7 +89,7 @@
                                         <br/><br/>
                                         </p>
                                         <div class="wPop-content-buttons">
-                                            <button id="remove_account_confirmation" class="wButton wButtonDanger fade tooltip-1" title="Click here to proceed with the account removal.">REMOVE</button>&nbsp;&nbsp;&nbsp;<button id="remove_account_cancel" class="wButton wButtonDanger fade tooltip-1" title="Click here to return to the previous screen.">CANCEL</button>
+                                            <button id="remove_account_confirmation" class="wButton wButtonDanger fade tooltip-1" title="Click here to proceed with the account removal.">REMOVE</button><span class="divider-2"></span><button id="remove_account_cancel" class="wButton wButtonDanger fade tooltip-1" title="Click here to return to the previous screen.">CANCEL</button>
                                         </div>
                                     </div>
                                 </div>
@@ -101,7 +100,7 @@
                             <div id="register">
                                 
                                 <form>
-                                    <button id="import_account" class="wButton fade tooltip-1" title="Click here to import an existing account.">IMPORT ACCOUNT</button>&nbsp;&nbsp;&nbsp;<button id="create_account" class="wButton fade tooltip-1" title="Click here to create a brand new account.">NEW ACCOUNT</button>
+                                    <button id="import_account" class="wButton fade tooltip-1" title="Click here to import an existing account.">IMPORT ACCOUNT</button><span class="divider-1"></span><button id="create_account" class="wButton fade tooltip-1" title="Click here to create a brand new account.">NEW ACCOUNT</button>
                                     <br/>
                                     
                                     <div id="login-wPop-new" class="wavesPop">
@@ -122,8 +121,10 @@
                                             <br/><br/>    
                                             Your SEED will also allow you to IMPORT your account to other devices.
                                             <br/><br/>
-                                            <i>NOTE: Make sure that you select the entire SEED in its lenght before keeping it. <br/>
-                                            It's suggested to use the copy-to-clipboard button.</i>
+                                            <i>NOTE: Make sure that you select the entire SEED lenght before keeping it. <br/>
+                                            It's suggested to use the copy-to-clipboard button located the right side of
+                                            <br/>
+                                            the SEED box.</i>    
                                             </p>
                                         </div>
                                     </div>
@@ -135,7 +136,7 @@
                                         <textarea type="text" id="walletSeed" class="wInput"> </textarea><span class="clipSpan tooltip-1" title="Copy the seed to the clipboard." data-clipboard-target="#walletSeed" ></span>
                                         <br/><br/>
                                         
-                                        <button id="generateKeys" class="wButton fade">GENERATE ADDRESS FROM SEED</button><span id="account_divider">&nbsp;&nbsp;&nbsp;</span><button id="generateRandomSeed" class="wButton fade">GENERATE NEW SEED</button>
+                                        <button id="generateKeys" class="wButton fade">GENERATE ADDRESS FROM SEED</button><span class="divider-1"></span><button id="generateRandomSeed" class="wButton fade">GENERATE NEW SEED</button>
                                         
                                         <div class="noDisp">
                                             <b>PUBLIC KEY</b> 
@@ -164,7 +165,7 @@
                                         <br/><br/>
                                         <i>NOTE: This is optional, the accounts do not forcefully
                                         <br/>
-                                        need to be assigned a name.</i>"></span>
+                                        need to have assigned a name.</i>"></span>
                                         <br/>
                                         <input type="text" id="walletName" class="wInput"/>
                                         <br/><br/>
@@ -184,7 +185,8 @@
                                         <br/><br/>
                                         
                                         <button id="registerSeed" class="wButton fade">REGISTER</button>
-                                        <button id="#" class="wButton goBack fade">BACK</button>
+                                        <span class="divider-2"></span>
+                                        <button id="#" class="wButton fade">BACK</button>
 
                                         <div id="errorRegister" class="noDisp"></div>
                                     </div>
@@ -197,7 +199,6 @@
             </tbody>
 
         </table>
-        </div>
 
     </div>
 <!-- / LOG IN AREA -->
