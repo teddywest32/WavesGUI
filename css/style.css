@@ -166,6 +166,15 @@ body {
     .phContent { max-width: 90%; }
 }
 
+@media only screen and (max-width: 620px) { 
+    .phContent > img { width: 96%; }
+    .phContent { 
+        width: 96%; 
+        padding: 1rem;
+        margin-bottom: 2rem;
+    }
+}
+
 .modal-media {
     margin: 0 auto;
     text-align: center;
@@ -925,6 +934,10 @@ input.tabs-radio:checked + label  img {
     min-width: 250px;
 }
 
+.wInput-error {
+    border: 2px solid #9C0005;
+}
+
 
 /* ====================================================== */
 /* PAYMENT FORMS PARAMETERS */ /* PAYMENT FORM PARAMETERS */
@@ -1241,6 +1254,10 @@ input.tabs-radio:checked + label  img {
 		margin-left: .5rem;
 		margin-right: .5rem;
 	}
+    
+    #blockheight, header .divider-2, header .inlineParagraph { display: none; }
+    
+    .header-Icon { width: 1.75rem; }
 }
 
 @media only screen and (max-width: 800px) {
@@ -1251,12 +1268,7 @@ input.tabs-radio:checked + label  img {
 		width: 100px;
 	}
 }
-
-@media only screen and (max-width: 640px) { /* Ipad */
-
-}
-    
-    
+   
 @media only screen and (max-width: 640px) {
 
 	#tabs-Iconset { height: 80%; }

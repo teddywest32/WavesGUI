@@ -52,7 +52,7 @@ var Waves = (function(Waves, $, undefined) {
                         accountName = accountDetails.name;
                     }
                     
-                    $("#wavesAccounts").append('<p class="loginAccountDiv"><span class="loginAccount tooltip-1 fade" title="Log into this account." data-id="'+accountKey+'"> <br/> <b>'+accountName+'</b> &nbsp;  <small>'+accountDetails.address+'</small></span><span class="clipSpan tooltip-1" title="Copy this address to the clipboard." data-clipboard-text="'+accountDetails.address+'"></span> &nbsp;&nbsp; <button class="removeAccount wButtonAlt fade tooltip-1" title="Remove this account from the list." data-id="'+accountKey+'"><span class="wButton-icon"><img src="img/wIcon_x.svg"></span>REMOVE</button></p> ');
+                    $("#wavesAccounts").append('<p class="loginAccountDiv"><span class="loginAccount tooltip-1 fade" title="Log into this account." data-id="'+accountKey+'"> <br/> <b>'+accountName+'</b> <span class="divider-1"></span> <small>'+accountDetails.address+'</small></span><span class="clipSpan tooltip-1" title="Copy this address to the clipboard." data-clipboard-text="'+accountDetails.address+'"></span> <span class="divider-1"></span> <button class="removeAccount wButtonAlt fade tooltip-1" title="Remove this account from the list." data-id="'+accountKey+'"><span class="wButton-icon"><img src="img/wIcon_x.svg"></span>REMOVE</button></p> ');
 
                 });
 
@@ -293,7 +293,7 @@ var Waves = (function(Waves, $, undefined) {
             $("#lockscreenTable").fadeOut(500);
             $("#wrapper").fadeIn(1300);
 
-			var formatBalance = Waves.formatAmount(balance);
+            var formatBalance = Waves.formatAmount(balance);
             $("#wavesCurrentBalance").val(formatBalance);
             $("#wavesbalance").html(formatBalance.split(".")[0]);
             $("#wavesbalancedec").html('.'+formatBalance.split(".")[1]);
@@ -335,6 +335,17 @@ var Waves = (function(Waves, $, undefined) {
 
     	return new Decimal(amount).dividedBy(100000000).toFixed(8);
 
+    }
+
+    Waves.isControlKey = function (charCode) {
+        if (charCode >= 32)
+            return false;
+        if (charCode === 10)
+            return false;
+        if (charCode === 13)
+            return false;
+
+        return true;
     }
 
 	return Waves;
