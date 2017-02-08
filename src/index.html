@@ -710,16 +710,75 @@
                 <!-- / PORTFOLIO TAB -->
 
                 <!-- EXCHANGE TAB -->
-                <div id="mBB-exchange" class="mBB-content" ng-switch-when="exchange">
-                    <div class="phContent">
-                        <h1>DECENTRALIZED EXCHANGE</h1>
-                        <br/>
-                        <p>Waves' features include a decentralized exchange in which users will be able to trade tokens of all kinds. There will be no AML/KYC requirements in order to use this service.
-                            <br/><br/>
-                            The Decentralized Exchange is scheduled for launch in the first quarter of 2017.
-                        </p>
-                        <br/><br/>
-                        <img src="img/tab_dex_prev.svg" />
+                <div id="mBB-exchange" class="mBB-content" ng-switch-when="exchange" ng-controller="exchangeMainController as exchangeMain">
+                    <div ng-if="exchangeMain.page === 'list'" ng-controller="exchangePairListController as pairList">
+                        <h2 class="sectionHeader">DECENTRALIZED EXCHANGE</h2>
+                        <section>
+                            <form id="pair-list-filter-form" name="pairListFilterForm" novalidate>
+                                <table>
+                                    <tr>
+                                        <td><md-button ng-click="exchangeMain.showNewPairDialog()">Open a new market</md-button></td>
+                                        <td><input class="wInput form-control" type="text" placeholder="Search" ng-model="pairList.search" ng-model-options="{ debounce: 500 }" /></td>
+                                        <td>
+                                            <md-button aria-label="Clear" ng-click="pairList.clearSearch()">Clear</md-button>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </form>
+                        </section>
+                        <section>
+                            <table>
+                                <thead>
+                                    <th>
+                                        <td>Market</td>
+                                        <td>Date added</td>
+                                    </th>
+                                </thead>
+                                <tbody>
+                                    <tr ng-show="pairList.noData">
+                                        <td colspan="2">There are no markets created. You can open a new one</td>
+                                    </tr>
+                                    <tr ng-show="!pairList.noData" ng-repeat="p in pairList.pairs | filter:pairList.searchPredicate track by p.id">
+                                        <td><a href="#" ng-click="exchangeMain.show">{{p.first.name}}/{{p.second.name}}</a></td>
+                                        <td>{{p.created | formatting}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </section>
+                    </div>
+
+                    <div class="noDisp" ng-controller="exchangePairNewController as newPair">
+                        <div id="exchange-pair-new-dialog" waves-dialog ok-button-caption="OPEN" on-dialog-ok="newPair.showPairMarket()">
+                            <h2 class="sectionHeader">OPEN MARKET PAIR</h2>
+                            <form id="exchange-pair-new-form" name="exchangePairNewForm" novalidate>
+                                <table>
+                                    <thead>
+                                    <tr>
+                                        <th>DESCRIPTION</th>
+                                        <th>INPUT</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>First asset ID</td>
+                                            <td>
+                                                <input class="wInput form-control" type="text" placeholder="Asset ID" ng-model="newPair.firstAssetId" />
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Second asset ID</td>
+                                            <td>
+                                                <input class="wInput form-control" type="text" placeholder="Asset ID" ng-model="newPair.secondAssetId" />
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </form>
+                        </div>
+                    </div>
+
+                    <div ng-if="exchangeMain.page === 'pair'" ng-controller="exchangePairController as pair">
+                        <h2 class="sectionHeader">ASSET EXCHANGE</h2>
                     </div>
                 </div>
                 <!-- / EXCHANGE TAB -->
@@ -966,6 +1025,7 @@
 
     <script src="js/ui.module.js"></script>
     <script src="js/application.context.factory.js"></script>
+    <script src="js/matcher.restangular.factory.js"></script>
     <script src="js/home.controller.js"></script>
     <script src="js/splash.controller.js"></script>
 
@@ -1021,6 +1081,12 @@
     <script src="js/portfolio/asset.filter.js"></script>
     <script src="js/portfolio/mass.payment.controller.js"></script>
     <script src="js/portfolio/file.select.directive.js"></script>
+
+    <script src="js/exchange/exchange.module.js"></script>
+    <script src="js/exchange/exchange.main.controller.js"></script>
+    <script src="js/exchange/exchange.pair.list.controller.js"></script>
+    <script src="js/exchange/exchange.pair.new.controller.js"></script>
+    <script src="js/exchange/exchange.pair.controller.js"></script>
 
     <script src="js/style.js"></script>
 
