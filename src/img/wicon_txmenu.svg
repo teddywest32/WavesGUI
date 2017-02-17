@@ -1,18 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <!-- Creator: CorelDRAW X7 -->
-<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="0.249165in" height="0.249165in" version="1.1" style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
-viewBox="0 0 63 63"
+<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="75px" height="75px" version="1.1" style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
+viewBox="0 0 19163 19163"
  xmlns:xlink="http://www.w3.org/1999/xlink">
  <defs>
   <style type="text/css">
    <![CDATA[
-    .fil0 {fill:#37556E;fill-rule:nonzero}
+    .fil1 {fill:#37556E;fill-rule:nonzero}
+    .fil0 {fill:#37556E;fill-opacity:0.000000}
+	.fil0:hover {fill:#D7DBE2;fill-opacity:1.000000}
    ]]>
   </style>
  </defs>
  <g id="Layer_x0020_1">
-  <metadata id="CorelCorpID_0Corel-Layer"/>
-  <path class="fil0" d="M31 0c9,0 17,4 23,9 5,6 9,14 9,22 0,9 -4,17 -9,23 -6,5 -14,9 -23,9 -8,0 -16,-4 -22,-9 -5,-6 -9,-14 -9,-23 0,-8 4,-16 9,-22 6,-5 14,-9 22,-9zm11 39l-11 -13 -11 13 -2 -1 12 -16 1 -1 1 1 13 16 -3 1zm-15 18l0 0c2,0 3,1 4,1 2,0 3,-1 5,-1 5,-1 10,-3 14,-7 2,-2 3,-4 4,-6 2,-4 4,-8 4,-13 0,-7 -3,-13 -8,-18l0 0 0 -1c-5,-4 -11,-7 -17,-7l-1 0 0 0 -1 0c0,0 -1,0 -2,0l0 0 0 0 0 0 -1 0c-6,1 -11,4 -15,7l0 1c-5,5 -8,11 -8,18 0,7 3,14 8,19 4,4 9,7 14,7z"/>
+  <path class="fil0" d="M9581 1326c4559,0 8255,3696 8255,8255 0,4559 -3696,8255 -8255,8255 -4559,0 -8255,-3696 -8255,-8255 0,-4559 3696,-8255 8255,-8255z"/>
+  <path class="fil1" d="M9620 0c2616,0 5002,1077 6772,2770 1693,1771 2771,4156 2771,6850 0,2616 -1078,5002 -2771,6772 -1770,1693 -4156,2771 -6772,2771 -2694,0 -5079,-1078 -6850,-2771 -1693,-1770 -2770,-4156 -2770,-6772 0,-2694 1077,-5079 2770,-6850 1771,-1693 4156,-2770 6850,-2770zm-1232 17547l0 -9c402,62 813,94 1232,94 440,0 871,-36 1292,-105 1712,-256 3204,-1088 4403,-2212 510,-539 958,-1161 1320,-1840 635,-1153 997,-2478 997,-3889 0,-2185 -867,-4165 -2274,-5615l-43 -46 -102 -100c-1365,-1338 -3205,-2189 -5242,-2278l-112 -4 -46 -2 -193 -2c-197,0 -393,8 -586,22l-79 6 -100 9 -91 9 -110 12c-1788,216 -3394,1023 -4620,2221l-109 107c-1462,1462 -2386,3463 -2386,5695 0,2155 924,4232 2386,5695 1154,1154 2770,2001 4463,2232z"/>
+  <polygon class="fil1" points="12949,12097 9581,7884 6214,12097 5510,11535 9229,6882 9581,6442 9933,6882 13652,11535 "/>
  </g>
 </svg>
